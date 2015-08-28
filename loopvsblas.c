@@ -12,7 +12,7 @@ void main()
 {
   double d;
 
-  int i;
+  int i,j;
 
   srand(time(NULL));
 
@@ -30,7 +30,7 @@ void main()
   {
     clock_t T1=clock();
     d = 0.0;
-    for (int j = 0; j < Repeats; ++j) {
+    for (j = 0; j < Repeats; ++j) {
       int offset=DIM*0;
       for (i = 0; i < DIM; ++i) {
         d += A[offset+i] * B[offset+i];
@@ -41,7 +41,7 @@ void main()
     
     clock_t T3=clock();
     d=0.0;
-    for (int j = 0; j < Repeats; ++j) {
+    for (j = 0; j < Repeats; ++j) {
       d += cblas_ddot(DIM, &A[DIM*0], 1, &B[DIM*0], 1);
     }
     printf("Result (blas) = %.0f\n",d);
@@ -57,7 +57,7 @@ void main()
   {
     clock_t T1=clock();
     d = 0.0;
-    for (int j = 0; j < Repeats; ++j) {
+    for (j = 0; j < Repeats; ++j) {
       int offset=DIM*j;
       for (i = 0; i < DIM; ++i) {
         d += A[offset+i] * B[offset+i];
@@ -68,7 +68,7 @@ void main()
     
     clock_t T3=clock();
     d=0.0;
-    for (int j = 0; j < Repeats; ++j) {
+    for (j = 0; j < Repeats; ++j) {
       d += cblas_ddot(DIM, &A[DIM*j], 1, &B[DIM*j], 1);
     }
     printf("Result (blas) = %.0f\n",d);
@@ -94,7 +94,7 @@ void main()
     
     clock_t T3=clock();
     d=0.0;
-    for (int j = 0; j < Repeats; ++j) {
+    for (j = 0; j < Repeats; ++j) {
       d += cblas_ddot(DIM, &A[DIM*j], 1, &B[DIM*j], 1);
     }
     printf("Result (blas) = %.0f\n",d);
